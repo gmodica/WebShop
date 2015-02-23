@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- List of amazon.com search on 'asp.net mvc', sorted by 'New and Popular', as of date 2015-02-21 -->
+<products>
+	<product id="001">
+		<name>Pro AngularJS (Expert's Voice in Web Development)</name>
+		<description><![CDATA[AngularJS is the leading framework for building dynamic JavaScript applications that take advantage of the capabilities of modern browsers and devices. AngularJS, which is maintained by Google, brings the power of the Model-View-Controller (MVC) pattern to the client, providing the foundation for complex and rich web apps. It allows you to build applications that are smaller, faster, and with a lighter resource footprint than ever before.]]></description>
+		<price>42.74</price>
+		<image>001.jpg</image>
+	</product>
+	<product id="002">
+		<name>Pro ASP.NET MVC 5 (Expert's Voice in ASP.Net)</name>
+		<description><![CDATA[The ASP.NET MVC 5 Framework is the latest evolution of Microsoft’s ASP.NET web platform. It provides a high-productivity programming model that promotes cleaner code architecture, test-driven development, and powerful extensibility, combined with all the benefits of ASP.NET.]]></description>
+		<price>40.44</price>
+		<image>002.jpg</image>
+	</product>	
+	<product id="003">
+		<name>Adaptive Code via C#: Agile coding with design patterns and SOLID principles (Developer Reference)</name>
+		<description><![CDATA[Your process may be agile, but are you building agility directly into the code base? This book teaches .NET programmers how to give code the flexibility to adapt to changing requirements and customer demands by applying cutting-edge techniques, including SOLID principles, design patterns, and other industry best practices.]]></description>
+		<price>33.07</price>
+		<image>003.jpg</image>
+	</product>	
+	<product id="004">
+		<name>C# 5.0 in a Nutshell: The Definitive Reference</name>
+		<description><![CDATA[When you have a question about C# 5.0 or the .NET CLR, this bestselling guide has precisely the answers you need. Uniquely organized around concepts and use cases, this updated fifth edition features a reorganized section on concurrency, threading, and parallel programming—including in-depth coverage of C# 5.0’s new asynchronous functions.]]></description>
+		<price>39.24</price>
+		<image>004.jpg</image>
+	</product>	
+	<product id="005">
+		<name>Pro C# 5.0 and the .NET 4.5 Framework (Expert's Voice in .NET)</name>
+		<description><![CDATA[This new edition of Pro C# 5.0 and the .NET 4.5 Platform has been completely revised and rewritten to reflect the latest changes to the C# language specification and new advances in the .NET Framework. You'll find new chapters covering all the important new features that make .NET 4.5 the most comprehensive release yet.]]></description>
+		<price>40.44</price>
+		<image>005.jpg</image>
+	</product>	
+	<product id="006">
+		<name>A Software Engineer Learns HTML5, JavaScript and jQuery</name>
+		<description><![CDATA[HTML5 web applications are now capable of matching or exceeding the scale and sophistication of desktop applications, but with the unique advantage of running natively inside the web browsers on billions of desktop computers, phones, TVs and tablets.]]></description>
+		<price>13.49</price>
+		<image>006.jpg</image>
+	</product>
+	<product id="007">
+		<name>A Software Engineer Learns HTML5, JavaScript and jQuery</name>
+		<description><![CDATA[Designing effective architecture is your best strategy for managing project complexity–and improving your results. But the principles and practices of software architecting–what the authors call the “science of hard decisions”–have been evolving for cloud, mobile, and other shifts. Now fully revised and updated, this book shares the knowledge and real-world perspectives that enable you to design for success–and deliver more successful solutions.]]></description>
+		<price>28.99</price>
+		<image>007.jpg</image>
+	</product>
+	<product id="008">
+		<name>C# in Depth</name>
+		<description><![CDATA[C# in Depth, Third Edition updates the best-selling second edition to cover the new features of C# 5, including the challenges of writing maintainable asynchronous code. It preserves the uniquely insightful look into the tricky areas and dusty corners of C# that only expert Jon Skeet can provide.]]></description>
+		<price>33.98</price>
+		<image>008.jpg</image>
+	</product>
+	<product id="009">
+		<name>Professional ASP.NET MVC 5</name>
+		<description><![CDATA[MVC 5 is the newest update to the popular Microsoft technology that enables you to build dynamic, data-driven websites. Like previous versions, this guide shows you step-by-step techniques on using MVC to best advantage, with plenty of practical tutorials to illustrate the concepts. It covers controllers, views, and models; forms and HTML helpers; data annotation and validation; membership, authorization, and security.]]></description>
+		<price>35.61</price>
+		<image>009.jpg</image>
+	</product>
+	<product id="010">
+		<name>Writing High-Performance .NET Code</name>
+		<description><![CDATA[Do you want your .NET code to have the absolute best performance it can? This book demystifies the CLR, teaching you how and why to write code with optimum performance. Learn critical lessons from a person who helped design and build one of the largest high-performance .NET systems in the world.
+This book does not just teach you how the CLR works—it teaches you exactly what you need to do now to obtain the best performance today. It will expertly guide you through the nuts and bolts of extreme performance optimization in .NET, complete with in-depth examinations of CLR functionality, free tool recommendations and tutorials, useful anecdotes, and step-by-step guides to measure and improve performance.]]></description>
+		<price>21.87</price>
+		<image>010.jpg</image>
+	</product>
+	<product id="011">
+		<name>Murach's ASP.NET 4.5 Web Programming with C# 2012 (Murach: Training &amp; Reference)</name>
+		<description><![CDATA[If you know the basics of C#, you're ready to learn to develop server-side web applications with ASP.NET...and that's where this book comes in:
+<ul>
+<li>Section 1 presents a quick-start course on ASP.NET Web Forms, Visual Studio tools, and the role of HTML5/CSS3...a course that works both for beginners and for experienced web developers who are new to ASP.NET</li>
+<li>Section 2 gives you the skills you need for every web application...like how to use the server controls, validate user entries, manage state, use master pages and themes, provide site navigation, and use friendly URLs</li>
+<li>Section 3 presents the skills you need for developing database-driven web sites at a professional level...including how to use SQL data sources, object data sources, and ASP.NET data controls like the GridView, DetailsView, FormView, and ListView controls</li>
+<li>Section 4 covers skills that enhance your professionalism...like how to develop secure web pages, authorize and authenticate users, send email, control the use of the Back button, and deploy finished applications</li>
+<li>Section 5 takes you to the next level by showing you how to use ASP.NET Ajax, how to develop WCF and Web API services, and how ASP.NET MVC programming differs from Web Forms programming</li>
+</ul>]]></description>
+		<price>40.96</price>
+		<image>011.jpg</image>
+	</product>
+	<product id="012">
+		<name>Training Guide Programming in HTML5 with JavaScript and CSS3 (MCSD) (Microsoft Press Training Guide)</name>
+		<description><![CDATA[Designed to help experienced programmers develop real-world, job-role-specific skills—this Training Guide focuses on creating applications with HTML5, JavaScript, and CSS3. Build hands-on expertise through a series of lessons, exercises, and suggested practices—and help maximize your performance on the job.]]></description>
+		<price>41.81</price>
+		<image>012.jpg</image>
+	</product>
+	<product id="013">
+		<name>ASP.NET Web API 2: Building a REST Service from Start to Finish</name>
+		<description><![CDATA[The ASP.NET MVC Framework has always been a good platform on which to implement REST-based services, but the introduction of the ASP.NET Web API Framework raised the bar to a whole new level.<br />
+Now in release version 2.1, the Web API Framework has evolved into a powerful and refreshingly usable platform. This concise book provides technical background and guidance that will enable you to best use the ASP.NET Web API 2 Framework to build world-class REST services.]]></description>
+		<price>28.49</price>
+		<image>013.jpg</image>
+	</product>
+	<product id="014">
+		<name>Professional SharePoint 2013 Development</name>
+		<description><![CDATA[A team of well-known Microsoft MVPs joins forces in this fully updated resource, providing you with in-depth coverage of development tools in the latest iteration of the immensely popular SharePoint. From building solutions to building custom workflow and content management applications, this book shares field-tested best practices on all aspect of SharePoint 2013 development.]]></description>
+		<price>37.3</price>
+		<image>014.jpg</image>
+	</product>	
+	<product id="015">
+		<name>Exam Ref 70-486 Developing ASP.NET MVC 4 Web Applications (MCSD)</name>
+		<description><![CDATA[Prepare for Microsoft Exam 70-486—and help demonstrate your real-world mastery of developing ASP.NET MVC-based solutions. Designed for experienced developers ready to advance their status, Exam Ref focuses on the critical-thinking and decision-making acumen needed for success at the Microsoft Specialist level.]]></description>
+		<price>28.51</price>
+		<image>015.jpg</image>
+	</product>	
+	<product id="016">
+		<name>Microsoft Visual Basic 2013 Step by Step (Step by Step Developer)</name>
+		<description><![CDATA[Expand your expertise—and teach yourself the fundamentals of Microsoft Visual Basic 2013. If you have previous programming experience but are new to Visual Basic 2013, this tutorial delivers the step-by-step guidance and coding exercises you need to master core topics and techniques.]]></description>
+		<price>31.72</price>
+		<image>016.jpg</image>
+	</product>
+	<product id="017">
+		<name>SharePoint 2013 Branding and User Interface Design</name>
+		<description><![CDATA[If you are planning, designing, and launching your brand using SharePoint, this book and author trio will walk you through everything you need to know in an understandable and approachable way. From specific technologies such as master pages, page layouts, and CSS to offering best-practices and real-world experience for creating successful branding projects through SharePoint 2013, you will learn how to approach your branding project in effective new ways. This visual book provides step-by-step instructions in a simple and striking format that focuses on each of the tasks you will face in your own branding project.]]></description>
+		<price>37.10</price>
+		<image>017.jpg</image>
+	</product>
+	<product id="018">
+		<name>Exam Ref 70-483 Programming in C# (MCSD)</name>
+		<description><![CDATA[Prepare for Microsoft Exam 70-483—and help demonstrate your real-world mastery of programming in C#. Designed for experienced software developers ready to advance their status, Exam Ref focuses on the critical-thinking and decision-making acumen needed for success at the Microsoft Specialist level.]]></description>
+		<price>27.65</price>
+		<image>018.jpg</image>
+	</product>	
+	<product id="019">
+		<name>Beginning ASP.NET 4.5.1: in C# and VB (Wrox Programmer to Programmer)</name>
+		<description><![CDATA[In this comprehensive guide to getting started with ASP.NET 4.5.1, best-selling author Imar Spaanjaars provides a firm foundation for coders new to ASP.NET and key insights for those not yet familiar with the important updates in the 4.5.1 release. Readers learn how to build full-featured ASP.NET websites using Visual Studio Express 2013 for Web, Microsoft’s free development tool for ASP.NET web applications. Beginning ASP.NET 4.5.1 guides you through the process of creating a fully functional, database-driven website, from creation of the most basic site structure all the way down to the successful deployment of the website to a production environment.]]></description>
+		<price>30.77</price>
+		<image>019.jpg</image>
+	</product>
+	<product id="020">
+		<name>Professional Team Foundation Server 2013 (Wrox Programmer to Programmer)</name>
+		<description><![CDATA[<strong>Team Foundation Server and Visual Studio Online is now for everyone!</strong><br />
+Team Foundation Server and Visual Studio Online is an integral part of Microsoft's Application Lifecycle Management suite for managing and delivering software projects. The 2013 update has opened up TFS for everyone by expanding capabilities to support iOS, MacOS, Android, and Java development. Professional Team Foundation Server 2013 covers the latest updates for Agile Project Management, Test-Case Management, Release Management, the newly announcing Visual Studio Online services, and shows new users the TFS workflow for managing and delivering products.  The authors leverage their positions as MVP Microsoft insiders to guide you step-by-step through all things TFS, as well as help prepare you for the Team Foundation Server Certification Exam.]]></description>
+		<price>38.77</price>
+		<image>020.jpg</image>
+	</product>
+	<product id="021">
+		<name>CLR via C#(Developer Reference)</name>
+		<description><![CDATA[Dig deep and master the intricacies of the common language runtime, C#, and .NET development. Led by programming expert Jeffrey Richter, a longtime consultant to the Microsoft .NET team - you’ll gain pragmatic insights for building robust, reliable, and responsive apps and components.]]></description>
+		<price>42.08</price>
+		<image>021.jpg</image>
+	</product>	
+	<product id="022">
+		<name>Dependency Injection in .NET</name>
+		<description><![CDATA[Dependency Injection in .NET, winner of the 2013 Jolt Awards for Productivity, presents core DI patterns in plain C#, so you'll fully understand how DI works, covers integration with standard Microsoft technologies like ASP.NET MVC, and teaches you to use DI frameworks like Structure Map, Castle Windsor, and Unity.]]></description>
+		<price>33.34</price>
+		<image>022.jpg</image>
+	</product>
+	<product id="023">
+		<name>Stealing with Pride, Vol. 1: Advanced OSD Customizations for MDT 2013 and ConfigMgr 2012 R2</name>
+		<description><![CDATA[This is the ultimate source for the working IT Pro who wants to develop and customize deployment solutions based on MDT 2013 and/or ConfigMgr 2012 R2. This is a HOW TO GET IT DONE book, solely focused on customizing deployment solutions with roots in the real world. In addition to well-proven step-by-step guides, you also get access to sample scripts and source code, allowing you to quickly test the solutions in your own environment. As far as the title goes, we don't mean you should steal things, literally. In this book, stealing is a metaphor for not reinventing the wheel. We don't want you to waste time developing solutions that are already available for free. Discover how to Setup MDT 2013 Lite Touch for OSD - Setup ConfigMgr 2012 R2 for OSD - Work with drivers in MDT 2013 and ConfigMgr 2012 R2 - Customize MDT 2013 Lite Touch and ConfigMgr 2012 R2 OSD - Select the right development tools for OSD customizations - Use version control for your scripts and source code - Advanced customization of the MDT 2013 Lite Touch wizard - Master the rules (CustomSettings.ini) - Create UserExit scripts - Configure user-driven installation (UDI) - Create and extend the MDT database - Use a custom frontend for the MDT database - Create and debug custom scripts and frontends - Create web services in both VB.NET and C# - Extend the MDT Monitoring feature - Setup and configure Orchestrator 2012 R2 - Integrate MDT 2013 and ConfigMgr 2012 R2 with Orchestrator 2012 R2.]]></description>
+		<price>40.50</price>
+		<image>023.jpg</image>
+	</product>
+	<product id="024">
+		<name>System Center 2012 Operations Manager Unleashed</name>
+		<description><![CDATA[This is the first comprehensive Operations Manager 2012 technical resource for every IT implementer and administrator. Building on their bestselling OpsMgr 2007 book, three Microsoft System Center Cloud and Data Center Management MVPs thoroughly illuminate major improvements in Microsoft’s newest version–including new enhancements just added in Service Pack 1.]]></description>
+		<price>37.28</price>
+		<image>024.jpg</image>
+	</product>	
+	<product id="025">
+		<name>Pro ASP.NET MVC 4</name>
+		<description><![CDATA[The ASP.NET MVC 4 Framework is the latest evolution of Microsoft’s ASP.NET web platform. It provides a high-productivity programming model that promotes cleaner code architecture, test-driven development, and powerful extensibility, combined with all the benefits of ASP.NET.]]></description>
+		<price>38.85</price>
+		<image>025.jpg</image>
+	</product>
+	<product id="026">
+		<name>Pro ASP.NET Web API Security: Securing ASP.NET Web API (Expert's Voice in .NET)</name>
+		<description><![CDATA[ASP.NET Web API is a key part of ASP.NET MVC 4 and the platform of choice for building RESTful services that can be accessed by a wide range of devices. Everything from JavaScript libraries to RIA plugins, RFID readers to smart phones can consume your services using platform-agnostic HTTP.]]></description>
+		<price>46.42</price>
+		<image>026.jpg</image>
+	</product>	
+	<product id="027">
+		<name>Web Development with Node and Express: Leveraging the JavaScript Stack</name>
+		<description><![CDATA[Learn how to build dynamic web applications with Express, a key component of the Node/JavaScript development stack. In this hands-on guide, author Ethan Brown teaches you the fundamentals through the development of a fictional application that exposes a public website and a RESTful API. You’ll also learn web architecture best practices to help you build single-page, multi-page, and hybrid web apps with Express.]]></description>
+		<price>22.22</price>
+		<image>027.jpg</image>
+	</product>	
+	<product id="028">
+		<name>Exam Ref 70-487 Developing Windows Azure and Web Services (MCSD)</name>
+		<description><![CDATA[Prepare for Microsoft Exam 70-487—and help demonstrate your real-world mastery of developing Windows Azure and web services. Designed for experienced developers ready to advance their status, Exam Ref focuses on the critical-thinking and decision-making acumen needed for success at the Microsoft Specialist level.]]></description>
+		<price>26.48</price>
+		<image>028.jpg</image>
+	</product>	
+	<product id="029">
+		<name>Entity Framework 6 Recipes</name>
+		<description><![CDATA[Entity Framework 6 Recipes provides an exhaustive collection of ready-to-use code solutions for Entity Framework, Microsoft's model-centric, data-access platform for the .NET Framework and ASP.NET development. With this book, you will learn the core concepts of Entity Framework through a broad range of clear and concise solutions to everyday data access tasks. Armed with this experience, you will be ready to dive deep into Entity Framework, experiment with new approaches, and develop ways to solve even the most difficult data access challenges. If you are a developer who likes to learn by example, then this is the right book for you.]]></description>
+		<price>46.38</price>
+		<image>029.jpg</image>
+	</product>
+	<product id="030">
+		<name>Microsoft SQL Server 2012 Unleashed</name>
+		<description><![CDATA[Buy the print version of Microsoft SQL Server 2012 Unleashed and get the eBook version for free! eBook version includes chapters 44-60 not included in the print. See inside the book for access code and details.<br/>
+With up-to-the-minute content, this is the industry’s most complete, useful guide to SQL Server 2012.<br />
+You’ll find start-to-finish coverage of SQL Server’s core database server and management capabilities: all the real-world information, tips, guidelines, and samples you’ll need to create and manage complex database solutions. The additional online chapters add extensive coverage of SQL Server Integration Services, Reporting Services, Analysis Services, T-SQL programming, .NET Framework integration, and much more.]]></description>
+		<price>40.88</price>
+		<image>030.jpg</image>
+	</product>
+	<product id="031">
+		<name>Professional C# 5.0 and .NET 4.5.1</name>
+		<description><![CDATA[<strong>Comprehensive, advanced coverage of C# 5.0 and .NET 4.5.1</strong><br />
+Whether you're a C# guru or transitioning from C/C++, staying up to date is critical to your success. Professional C# 5.0 and .NET 4.5.1 is your go-to guide for navigating the programming environment for the Windows platform. After a quick refresher of the C# basics, the team of expert authors dives in to C# 5.0 and updates for NET 4.5.1. Includes:
+<ul>
+<li>Different behaviors for .NET 4.5.1 and the changes to Visual Studio 2013</li>
+<li>Changes to ASP.NET Core, Web Forms, MVC, and Web API</li>
+<li>Updated Windows 8 deployments and localization, event logs, and data flow</li>
+<li>Shuffling of ADO.NET Entity Framework</li>
+<li>Additions to Windows Workflow Foundation</li>
+<li>New Windows Runtime 2.0 updates</li>
+</ul>]]></description>
+		<price>42.50</price>
+		<image>031.jpg</image>
+	</product>
+	<product id="032">
+		<name>ASP.NET Web API 2 Recipes: A Problem-Solution Approach</name>
+		<description><![CDATA[ASP.NET Web API 2 Recipes provides you with the code to solve a full range of Web API problems and question marks that you might face when developing line-of-business applications. ASP.NET Web API 2 Recipes gives you an in-depth explanation for each of these scenarios and shows you how to use Web API with a vast array of .NET application development tools and external libraries, to solve common business problems. Find out how you can build custom web services with ASP.NET Web API more efficiently than ever.]]></description>
+		<price>47.49</price>
+		<image>032.jpg</image>
+	</product>	
+	<product id="033">
+		<name>C# 5.0 All-in-One For Dummies</name>
+		<description><![CDATA[800+ pages of top-notch coverage; perfect for learning the fundamentals of C#!<br />
+C# is a complex programming language for building .NET-connected software for Microsoft Windows, cloud computing, the Web, and a wide range of devices. Today's developers use it to develop Azure and Windows Phone apps, and Android applications using Mono.  Novice programmers can get up and running quickly on C# using this practical guide. Crammed with 800+ pages of information, this all-in-one book helps you quickly create a C# program while learning C# and object-oriented programming fundamentals, Windows and Windows phone programming, and more.]]></description>
+		<price>29.68</price>
+		<image>033.jpg</image>
+	</product>	
+	<product id="034">
+		<name>Professional Test Driven Development with C#: Developing Real World Applications with TDD</name>
+		<description><![CDATA[<strong>Hands-on guidance to creating great test-driven development practice</strong><br />
+Test-driven development (TDD) practice helps developers recognize a well-designed application, and encourages writing a test before writing the functionality that needs to be implemented. This hands-on guide provides invaluable insight for creating successful test-driven development processes. With source code and examples featured in both C# and .NET, the book walks you through the TDD methodology and shows how it is applied to a real-world application. You’ll witness the application built from scratch and details each step that is involved in the development, as well as any problems that were encountered and the solutions that were applied.]]></description>
+		<price>31.65</price>
+		<image>034.jpg</image>
+	</product>
+	<product id="035">
+		<name>Learning Windows Azure</name>
+		<description><![CDATA[This book guides you through the process of building a Microsoft Azure system based around a case study for an industrial bakery with three business domains. Starting with the system design and selection of the correct Azure services, the book progresses by building the system in scalable, decoupled tiers. The book will teach you how to implement a scalable architecture using Azure Service Bus topics, allowing customer orders to be sent between decoupled business domains and processed by scalable worker roles. Azure Active Directory is implemented across all internal systems in the case study including websites, client applications, and mobile applications to create a unified authentication experience.]]></description>
+		<price>40.49</price>
+		<image>035.jpg</image>
+	</product>
+	<product id="036">
+		<name>Beginning ASP.NET 4.5: in C# and VB</name>
+		<description><![CDATA[The ultimate programming guide to ASP.NET 4.5, by popular author and Microsoft MVP Imar Spaanjaars<br />
+Updated for ASP.NET 4.5, this introductory book is filled with helpful examples and contains a user-friendly, step-by-step format. Written by popular author and Microsoft ASP.NET MVP Imar Spaanjaars, this book walks you through ASP.NET, Microsoft's technology for building dynamically generated web pages. This edition retains the highly accessible approach to building the Planet Wrox website example, an online community site featuring product reviews, picture sharing, bonus content for registered users, and more.]]></description>
+		<price>31.51</price>
+		<image>036.jpg</image>
+	</product>	
+</products>

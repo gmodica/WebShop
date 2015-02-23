@@ -40,6 +40,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -92,6 +107,9 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -165,10 +183,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,12 +197,55 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ICatalogService.cs" />
+    <Compile Include="Services\Implementations\CatalogService.cs" />
+    <Compile Include="Services\Implementations\SettingsService.cs" />
+    <Compile Include="Services\ISettingsService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\products.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\products\001.jpg" />
+    <Content Include="Content\products\002.jpg" />
+    <Content Include="Content\products\003.jpg" />
+    <Content Include="Content\products\004.jpg" />
+    <Content Include="Content\products\005.jpg" />
+    <Content Include="Content\products\006.jpg" />
+    <Content Include="Content\products\007.jpg" />
+    <Content Include="Content\products\008.jpg" />
+    <Content Include="Content\products\009.jpg" />
+    <Content Include="Content\products\010.jpg" />
+    <Content Include="Content\products\011.jpg" />
+    <Content Include="Content\products\012.jpg" />
+    <Content Include="Content\products\013.jpg" />
+    <Content Include="Content\products\014.jpg" />
+    <Content Include="Content\products\015.jpg" />
+    <Content Include="Content\products\016.jpg" />
+    <Content Include="Content\products\017.jpg" />
+    <Content Include="Content\products\018.jpg" />
+    <Content Include="Content\products\019.jpg" />
+    <Content Include="Content\products\020.jpg" />
+    <Content Include="Content\products\021.jpg" />
+    <Content Include="Content\products\022.jpg" />
+    <Content Include="Content\products\023.jpg" />
+    <Content Include="Content\products\024.jpg" />
+    <Content Include="Content\products\025.jpg" />
+    <Content Include="Content\products\026.jpg" />
+    <Content Include="Content\products\027.jpg" />
+    <Content Include="Content\products\028.jpg" />
+    <Content Include="Content\products\029.jpg" />
+    <Content Include="Content\products\030.jpg" />
+    <Content Include="Content\products\031.jpg" />
+    <Content Include="Content\products\032.jpg" />
+    <Content Include="Content\products\033.jpg" />
+    <Content Include="Content\products\034.jpg" />
+    <Content Include="Content\products\035.jpg" />
+    <Content Include="Content\products\036.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -238,10 +301,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Catalog\Index.cshtml" />
+    <Content Include="Views\Catalog\Product.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

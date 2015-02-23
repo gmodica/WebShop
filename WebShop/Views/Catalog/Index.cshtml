@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Catalog";
+}
+@using WebShop.Models
+@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<Product>
+
+<div id="content">
+    @foreach (Product p in Model)
+    {
+        <article class="product">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="@Url.Action("Product", "Catalog", new { id = p.Id })"><img class="pull-right product-thumbnail" src="~/Content/products/@p.Image" alt="@p.Name" /></a>
+                </div>
+                <div class="col-md-10">
+                    <header>
+                        <h3>@Html.ActionLink(p.Name, "Product", "Catalog", new { id = p.Id }, null)</h3>
+                    </header>
+                    <p>Price: <strong>@Html.DisplayFor(m => p.Price)</strong></p>
+                </div>
+            </div>
+        </article>
+    }
+
+    <div class="contentPager">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    </div>
+</div>
+
+@section scripts
+{
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            if (window.history && history.pushState) {
+                $(window).bind('popstate', function (e) {
+                    loadItems(location.pathname + location.search);
+                });
+                doPager();
+            }
+        });
+
+        function doPager() {
+            $('.contentPager a[href]').click(function (e) {
+                e.preventDefault();
+                loadItems($(this).attr('href'));
+                history.pushState(null, null, $(this).attr('href'));
+            });
+        }
+
+        function loadItems(url) {
+            $('#content').empty().load(url + ' #content', function () {
+                doPager();
+            });
+        }
+    </script>
+}

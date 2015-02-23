@@ -1,0 +1,45 @@
+﻿@using WebShop.Models
+
+@model Product
+
+@{
+    ViewBag.Title = Model.Name;
+}
+<article>
+    <header>
+        <h2>@Model.Name</h2>
+    </header>
+    <div class="row">
+        <div class="col-md-3">
+            <img class="pull-right product-photo" src="~/Content/products/@Model.Image" alt="@Model.Name" />
+        </div>
+        <div class="col-md-9">
+            <dl class="dl-horizontal pull-left">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+
+                <dd>
+                    @Html.Raw(Model.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+            </dl>
+            <button class="btn btn-primary pull-right" id="addToCartButton"><i class="fa fa-shopping-cart"></i> Add to cart &raquo;</button>
+        </div>
+    </div>
+</article>

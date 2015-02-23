@@ -22,3 +22,24 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.product-thumbnail {
+	width: 130px;
+	height: 160px;
+}
+
+.product-minithumbnail {
+	width: 65px;
+	height: 80px;
+}
+
+.product-photo {
+	width: 260px;
+	height: 320px;
+}
+
+.product {
+	margin: 20px;
+	padding: 5px;
+	border-bottom: 1px solid gray;
+}
