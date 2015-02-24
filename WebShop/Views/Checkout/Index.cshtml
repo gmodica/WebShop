@@ -1,0 +1,88 @@
+﻿@using WebShop.Models;
+
+@model Cart
+
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<h2><i class="fa fa-check-circle"></i> Checkout</h2>
+
+<div id="content">
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">Product</th>
+                <th><div class="text-center">Quantity</div></th>
+                <th><div class="pull-right">Unit Price</div></th>
+                <th><div class="pull-right">Price</div></th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartItem item in Model.Items)
+            {
+                <tr>
+                    <td><img class="product-minithumbnail" src="~/Content/products/@item.Product.Image" alt="@item.Product.Name" /></td>
+                    <td>@Html.DisplayFor(m => item.Product.Name)</td>
+                    <td><div class="text-center">@Html.DisplayFor(m => item.Quantity)</div></td>
+                    <td><div class="pull-right">@Html.DisplayFor(m => item.Product.Price)</div></td>
+                    <td><div class="pull-right">@Html.DisplayFor(m => item.Total)</div></td>
+                </tr>
+            }
+            <tr class="info">
+                <td colspan="4"><div class="pull-right">Sub Total</div></td>
+                <td style="border-bottom: 0px"><div class="pull-right">@Html.DisplayFor(m => m.SubTotal)</div></td>
+            </tr>
+            <tr class="info">
+                <td colspan="4" style="border: 0px"><div class="pull-right">Taxes (@(Model.Tax * 100)%)</div></td>
+                <td style="border: 0px"><div class="pull-right">@Html.DisplayFor(m => m.TaxTotal)</div></td>
+            </tr>
+            <tr class="info">
+                <td colspan="4" style="border: 0px"><div class="pull-right"><strong>Total</strong></div></td>
+                <td><div class="pull-right"><strong>@Html.DisplayFor(m => m.Total)</strong></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="text-center">
+        <a href="@Url.Action("Index","Catalog")" role="button" class="btn btn-default btn-lg">Continue Shopping</a>
+        <button id="checkout" type="button" class="btn btn-success btn-lg" @(Model.Items.Count == 0 ? "disabled=\"disabled\"" : "")><i class="fa fa-check-circle"></i> Confirm Checkout</button>
+    </p>
+
+
+    @using (Html.BeginForm("Checkout", "Checkout", FormMethod.Post, new { id = "checkoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+</div>
+
+
+<div class="notifications bottom-right"></div>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#checkout").click(function () {
+                bootbox.dialog({
+                    message: "Are you sure you want to confirm the checkout?",
+                    title: "Checkout",
+                    buttons: {
+                        success: {
+                            label: "Cancel"
+                        },
+                        danger: {
+                            label: "Confirm",
+                            className: "btn-success",
+                            callback: function () {
+                                $("#checkoutForm").submit();
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

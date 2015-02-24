@@ -3,27 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebShop.Models;
+using WebShop.Services;
 
 namespace WebShop.Controllers
 {
 	public class HomeController : Controller
 	{
+		protected readonly ICatalogService catalogService;
+
+		public HomeController(ICatalogService catalogService)
+		{
+			this.catalogService = catalogService;
+		}
+
 		public ActionResult Index()
 		{
-			return View();
+			var deals = catalogService.GetDeals();
+			HomeViewModel model = new HomeViewModel() { Deals = deals.Take(3).ToList() };
+
+			return View(model);
 		}
 
 		public ActionResult About()
 		{
-			ViewBag.Message = "Your application description page.";
-
 			return View();
 		}
 
 		public ActionResult Contact()
 		{
-			ViewBag.Message = "Your contact page.";
-
 			return View();
 		}
 	}

@@ -47,6 +47,16 @@ namespace WebShop.Services
 			return products.AsQueryable();
 		}
 
+		public IQueryable<Product> GetDeals()
+		{
+			Random random = new Random(DateTime.Now.Millisecond);
+			List<Product> deals = new List<Product>();
+		
+			for(int i = 0; i <= 3; i++)
+				deals.Add(products[random.Next(products.Count)]);
+
+			return deals.AsQueryable();
+		}
 	}
 
 }

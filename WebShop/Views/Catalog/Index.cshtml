@@ -1,25 +1,29 @@
 ﻿@{
     ViewBag.Title = "Catalog";
 }
+
 @using WebShop.Models
 @using PagedList
 @using PagedList.Mvc
 
 @model IPagedList<Product>
 
+<h2><i class="fa fa-book"></i> Catalog</h2>
+
 <div id="content">
     @foreach (Product p in Model)
     {
         <article class="product">
             <div class="row">
-                <div class="col-md-2">
-                    <a href="@Url.Action("Product", "Catalog", new { id = p.Id })"><img class="pull-right product-thumbnail" src="~/Content/products/@p.Image" alt="@p.Name" /></a>
+                <div class="col-md-2 col-xs-3">
+                    <a href="@Url.Action("Product", "Catalog", new { id = p.Id })"><img class="product-thumbnail" src="~/Content/products/@p.Image" alt="@p.Name" /></a>
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-10 col-xs-7">
                     <header>
                         <h3>@Html.ActionLink(p.Name, "Product", "Catalog", new { id = p.Id }, null)</h3>
                     </header>
                     <p>Price: <strong>@Html.DisplayFor(m => p.Price)</strong></p>
+                    <p><a class="btn btn-primary" href="@Url.Action("Product","Catalog", new { id = p.Id})"><i class="fa fa-book"></i> Details &raquo;</a></p>
                 </div>
             </div>
         </article>

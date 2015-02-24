@@ -1,0 +1,166 @@
+﻿@using WebShop.Models;
+
+@model Cart
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<h2><i class="fa fa-shopping-cart"></i> Shopping Cart</h2>
+
+<div id="content">
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="2">Product</th>
+                <th colspan="3"><div class="text-center">Quantity</div></th>
+                <th><div class="pull-right">Unit Price</div></th>
+                <th><div class="pull-right">Price</div></th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartItem item in Model.Items)
+            {
+                <tr>
+                    <td><img class="product-minithumbnail" src="~/Content/products/@item.Product.Image" alt="@item.Product.Name" /></td>
+                    <td>@Html.DisplayFor(m => item.Product.Name)</td>
+                    <td><button class="btn btn-default btn-xs" id="subtract" data-path="@item.Product.Id" @(item.Quantity <= 0 ? "disabled=\"disabled\"" : "")><i class="fa fa-minus-circle"></i></button></td>
+                    <td><div class="text-center">@Html.DisplayFor(m => item.Quantity)</div></td>
+                    <td><button class="btn btn-default btn-xs" id="add" data-path="@item.Product.Id"><i class="fa fa-plus-circle"></i></button></td>
+                    <td><div class="pull-right">@Html.DisplayFor(m => item.Product.Price)</div></td>
+                    <td><div class="pull-right">@Html.DisplayFor(m => item.Total)</div></td>
+                    <td><button class="btn btn-danger btn-xs" id="delete" data-path="@item.Product.Id" data-content="@item.Product.Name"><i class="fa fa-trash"></i> Remove</button></td>
+                </tr>
+            }
+            <tr class="info">
+                <td colspan="6"><div class="pull-right">Sub Total</div></td>
+                <td style="border-bottom: 0px"><div class="pull-right">@Html.DisplayFor(m => m.SubTotal)</div></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr class="info">
+                <td colspan="6" style="border: 0px"><div class="pull-right">Taxes (@(Model.Tax * 100)%)</div></td>
+                <td style="border: 0px"><div class="pull-right">@Html.DisplayFor(m => m.TaxTotal)</div></td>
+            </tr>
+            <tr class="info">
+                <td colspan="6" style="border: 0px"><div class="pull-right"><strong>Total</strong></div></td>
+                <td><div class="pull-right"><strong>@Html.DisplayFor(m => m.Total)</strong></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="text-center">
+        <a href="@Url.Action("Index","Catalog")" role="button" class="btn btn-default btn-lg">Continue Shopping</a>
+        <button id="emptyCart" type="button" class="btn btn-danger btn-lg" @(Model.Items.Count == 0 ? "disabled=\"disabled\"" : "")><i class="fa fa-trash"></i> Empty Cart</button>
+        <a role="button" href="@Url.Action("Index","Checkout")" class="btn btn-success btn-lg" @(Model.Items.Count == 0 ? "disabled=\"disabled\"" : "")><i class="fa fa-check-circle"></i> Proceed To Checkout</a>
+    </p>
+</div>
+
+
+<div class="notifications bottom-right"></div>
+
+@section scripts
+{
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        wireEvents();
+    });
+
+    function wireEvents() {
+        $("#delete").click(function () {
+            var id = $(this).attr('data-path');
+
+            bootbox.dialog({
+                message: "Are you sure you want to remove '" + $(this).attr('data-content') + "' from cart?",
+                title: "Shopping cart",
+                buttons: {
+                    success: {
+                        label: "Cancel"
+                    },
+                    danger: {
+                        label: "Remove",
+                        className: "btn-danger",
+                        callback: function () {
+                            $.post("@(Url.Action("RemoveItemFromCart", "ShoppingCart"))/" + id, null,
+                               function (data) {
+                                   refreshCart();
+                               });
+
+                            $('.bottom-right').notify({
+                                message: { text: "Item removed successfuly" },
+                                type: 'success',
+                                fadeOut: {
+                                    delay: Math.floor(Math.random() * 500) + 2500
+                                }
+                            }).show();
+                        }
+                    }
+                }
+            });
+        });
+
+        $("#add").click(function () {
+            var id = $(this).attr('data-path');
+            $.post("@(Url.Action("AddItemToCart", "ShoppingCart"))/" + id, null,
+                function (data) {
+                    refreshCart();
+                });
+        });
+
+        $("#subtract").click(function () {
+            var id = $(this).attr('data-path');
+            $.post("@(Url.Action("SubtractItemFromCart", "ShoppingCart"))/" + id, null,
+                function (data) {
+                    refreshCart();
+                });
+        });
+
+
+        $("#emptyCart").click(function () {
+            bootbox.dialog({
+                message: "Are you sure you want to empty the cart?",
+                title: "Shopping cart",
+                buttons: {
+                    success: {
+                        label: "Cancel"
+                    },
+                    danger: {
+                        label: "Empty",
+                        className: "btn-danger",
+                        callback: function () {
+                            $.post("@(Url.Action("EmptyCart", "ShoppingCart"))", null,
+                               function (data) {
+                                   refreshCart();
+                               });
+
+                            $('.bottom-right').notify({
+                                message: { text: "Cart is empty" },
+                                type: 'success',
+                                fadeOut: {
+                                    delay: Math.floor(Math.random() * 500) + 2500
+                                }
+                            }).show();
+                        }
+                    }
+                }
+            });
+        });
+    }
+
+    function refreshCart()
+    {
+        $("#content").load("@(Url.Action("Index","ShoppingCart")) #content", function (data) {
+            $.ajax({
+                url: "@(Url.Action("CartSummary","ShoppingCart"))",
+                cache: false,
+                dataType: "html",
+                success: function (data) {
+                    $("#cart").html(data);
+                }
+            });
+            wireEvents();
+        });
+    }
+    </script>
+}

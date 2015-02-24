@@ -21,10 +21,14 @@ namespace WebShop
 
 			bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
 					  "~/Scripts/bootstrap.js",
+					  "~/Scripts/bootstrap-notify.js",
+					  "~/Scripts/bootbox.js",
 					  "~/Scripts/respond.js"));
 
 			bundles.Add(new StyleBundle("~/Content/css").Include(
 					  "~/Content/bootstrap.css",
+					  "~/Content/bootstrap-notify.css",
+					  "~/Content/font-awesome.css",
 					  "~/Content/site.css"));
 		}
 	}

@@ -7,8 +7,10 @@ namespace WebShop.App_Start
 	using System.Web;
 	using System.Web.Configuration;
 	using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+	using Microsoft.AspNet.Identity.Owin;
 	using Ninject;
 	using Ninject.Web.Common;
+	using WebShop.Models;
 	using WebShop.Services;
 
     public static class NinjectWebCommon 
@@ -63,12 +65,20 @@ namespace WebShop.App_Start
         {
 			kernel.Bind<ISettingsService>().To<SettingsService>().InSingletonScope();
 
+			kernel.Bind<IFinanceService>().To<FinanceService>().InSingletonScope();
+
 			kernel.Bind<ICatalogService>().ToMethod(context =>
 			{
 				string appDataPath = HttpContext.Current.Server.MapPath("~/App_Data");
 				string file = System.Text.RegularExpressions.Regex.Replace(WebConfigurationManager.AppSettings["catalog:path"], @"\|DataDirectory\|", appDataPath, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
 
 				return CatalogService.Create(file);
+			}).InSingletonScope();
+
+			kernel.Bind<IShoppingCartService>().ToMethod(context =>
+			{
+				ApplicationDbContext dbContext = HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>();
+				return ShoppingCartService.Create(dbContext);
 			}).InSingletonScope();
         }        
     }
