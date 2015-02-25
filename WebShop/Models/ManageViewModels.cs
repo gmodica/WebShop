@@ -7,6 +7,7 @@ namespace WebShop.Models
 {
     public class IndexViewModel
     {
+		public ApplicationUser User { get; set; }
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }
@@ -83,4 +84,49 @@ namespace WebShop.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+	public class EditUserViewModel
+	{
+		public string Id { get; set; }
+
+		[Required]
+		[Display(Name = "Title")]
+		public Title? Title_ { get; set; } // the underscore is for Html.EnumDropDownListFor helper, which doesn't select the current value when using 'Title'
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "First Name")]
+		public string FirstName { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "Last Name")]
+		public string LastName { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "Address")]
+		public string Address { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "House")]
+		public string House { get; set; }
+
+		[Required]
+		[StringLength(10)]
+		[DataType(DataType.Text)]
+		[Display(Name = "Zip")]
+		public string Zip { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "City")]
+		public string City { get; set; }
+	}
 }

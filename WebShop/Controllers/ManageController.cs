@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -66,6 +67,7 @@ namespace WebShop.Controllers
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
+				User = await UserManager.FindByIdAsync(User.Identity.GetUserId()),
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
@@ -319,6 +321,62 @@ namespace WebShop.Controllers
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
+
+		// GET: /Manage/Edit/1
+		public async Task<ActionResult> Edit(string id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var user = await UserManager.FindByIdAsync(id);
+			if (user == null)
+			{
+				return HttpNotFound();
+			}
+
+			return View(new EditUserViewModel()
+			{
+				Id = user.Id,
+				Title_ = user.Title,
+				FirstName = user.FirstName,
+				LastName = user.LastName,
+				Address = user.Address,
+				House = user.House,
+				Zip = user.Zip,
+				City = user.City
+			});
+		}
+
+		//
+		// POST: /Manage/Edit/5
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> Edit([Bind(Include = "Title_,FirstName,LastName,Address,House,Zip,City,Id,")] EditUserViewModel editUser)
+		{
+			if (ModelState.IsValid)
+			{
+				var user = await UserManager.FindByIdAsync(editUser.Id);
+				if (user == null)
+				{
+					return HttpNotFound();
+				}
+
+				user.FirstName = editUser.FirstName;
+				user.LastName = editUser.LastName;
+				user.Title = editUser.Title_;
+				user.Address = editUser.Address;
+				user.House = editUser.House;
+				user.Zip = editUser.Zip;
+				user.City = editUser.City;
+
+				await UserManager.UpdateAsync(user);
+
+				return RedirectToAction("Index");
+			}
+			ModelState.AddModelError("", "Something failed.");
+			return View();
+		}
 
         protected override void Dispose(bool disposing)
         {

@@ -6,7 +6,7 @@
     function ProductViewModel(root, product) {
         this.id = product.Id;
         this.name = product.Name;
-        this.price = product.Price;
+        this.price = product.Price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
         this.image = product.Image;
     }
 
@@ -35,7 +35,7 @@ function ProductDetailViewModel(url) {
             self.id(product.Id);
             self.name(product.Name);
             self.description(product.Description);
-            self.price(product.Price);
+            self.price(product.Price.toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
             self.image(product.Image);
         });
     }

@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201502232252535_ShoppingCart.Designer.cs">
       <DependentUpon>201502232252535_ShoppingCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502251735205_Profile.cs" />
+    <Compile Include="Migrations\201502251735205_Profile.Designer.cs">
+      <DependentUpon>201502251735205_Profile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
@@ -356,6 +360,7 @@
     <Content Include="Views\Checkout\Index.cshtml" />
     <Content Include="Views\Checkout\Thanks.cshtml" />
     <Content Include="Views\Catalog\WebApi.cshtml" />
+    <Content Include="Views\Manage\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201502230814456_InitialCreate.resx">
@@ -363,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502232252535_ShoppingCart.resx">
       <DependentUpon>201502232252535_ShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502251735205_Profile.resx">
+      <DependentUpon>201502251735205_Profile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

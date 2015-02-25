@@ -64,6 +64,46 @@ namespace WebShop.Models
 
     public class RegisterViewModel
     {
+		[Required]
+		[Display(Name = "Title")]
+		public Title? Title { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "First Name")]
+		public string FirstName { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "Last Name")]
+		public string LastName { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "Address")]
+		public string Address { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "House")]
+		public string House { get; set; }
+
+		[Required]
+		[StringLength(10)]
+		[DataType(DataType.Text)]
+		[Display(Name = "Zip")]
+		public string Zip { get; set; }
+
+		[Required]
+		[StringLength(50)]
+		[DataType(DataType.Text)]
+		[Display(Name = "City")]
+		public string City { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

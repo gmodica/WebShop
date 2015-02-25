@@ -15,7 +15,7 @@
                     <header>
                         <h3><a data-toggle="modal" data-target="#productModal" data-bind="attr: { 'data-path': id }" href="#"><span data-bind="text: name"></span></a></h3>
                     </header>
-                    <p>Price: <strong>$<span data-bind="text: price"></span></strong></p>
+                    <p>Price: <strong><span data-bind="text: price"></span></strong></p>
                     <p><a class="btn btn-primary" data-toggle="modal" data-target="#productModal" data-bind="attr: { 'data-path': id }"><i class="fa fa-book"></i> Details &raquo;</a></p>
                 </div>
             </div>
@@ -36,9 +36,9 @@
                         <img class="product-photo" data-bind="attr: { src: '/Content/products/' + image(), alt: name }" />
                     </div>
                     <div class="col-md-8">
-                        <p><strong>Name</strong><br /><span data-bind="{text: name}"></span></p>
-                        <p><strong>Description</strong><div data-bind="{html: description}"></div></p>
-                        <p><strong>Price</strong>: $<span data-bind="{text: price}"></span></p>
+                        <p><strong>Name</strong><br /><span data-bind="text: name"></span></p>
+                        <p><strong>Description</strong><div data-bind="html: description"></div></p>
+                        <p><strong>Price</strong>: <span data-bind="text: price"></span></p>
                     </div>
                 </div>
             </div>

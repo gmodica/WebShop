@@ -3,13 +3,38 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
     <h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>Profile:</dt>
+        <dd>[
+            @Html.ActionLink("Edit your profile information", "Edit", new { id = Model.User.Id })
+        ]</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.User.Title):</dt>        
+        <dd>@Html.DisplayTextFor(m => m.User.Title)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.User.FirstName):</dt>
+        <dd>@Html.DisplayTextFor(m => m.User.FirstName)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.User.LastName):</dt>
+        <dd>@Html.DisplayTextFor(m => m.User.LastName)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.User.Address):</dt>
+        <dd>@Html.DisplayTextFor(m => m.User.Address)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.User.House):</dt>
+        <dd>@Html.DisplayTextFor(m => m.User.House)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.User.Zip):</dt>
+        <dd>@Html.DisplayTextFor(m => m.User.Zip)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.User.City):</dt>
+        <dd>@Html.DisplayTextFor(m => m.User.City)</dd>
         <dt>Password:</dt>
         <dd>
             [

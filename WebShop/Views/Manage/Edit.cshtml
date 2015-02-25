@@ -1,0 +1,82 @@
+﻿@using WebShop.Models;
+
+@model EditUserViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Edit User Form</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title_, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(m => m.Title_, "Select one", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title_)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Address, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Address)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.House, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.House, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.House)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Zip, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Zip)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.City, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.City)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a href="@Url.Action("Index","Manage")" class="btn btn-default">Cancel</a>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
