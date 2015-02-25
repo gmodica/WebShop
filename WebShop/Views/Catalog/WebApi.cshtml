@@ -1,0 +1,76 @@
+﻿<h2><i class="fa fa-book"></i> Catalog</h2>
+
+<div class="spinner">
+    <div id="spinner"></div>
+</div>
+
+<div id="content">
+    <div data-bind="foreach: products">
+        <article class="product">
+            <div class="row">
+                <div class="col-md-2">
+                    <a data-toggle="modal" data-target="#productModal" data-bind="attr: { 'data-path': id }" href="#"><img class="product-thumbnail" data-bind="attr: { src: '/Content/products/' + image, alt: name }" /></a>
+                </div>
+                <div class="col-md-10">
+                    <header>
+                        <h3><a data-toggle="modal" data-target="#productModal" data-bind="attr: { 'data-path': id }" href="#"><span data-bind="text: name"></span></a></h3>
+                    </header>
+                    <p>Price: <strong>$<span data-bind="text: price"></span></strong></p>
+                    <p><a class="btn btn-primary" data-toggle="modal" data-target="#productModal" data-bind="attr: { 'data-path': id }"><i class="fa fa-book"></i> Details &raquo;</a></p>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+
+<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><span data-bind="text: name"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="product-photo" data-bind="attr: { src: '/Content/products/' + image(), alt: name }" />
+                    </div>
+                    <div class="col-md-8">
+                        <p><strong>Name</strong><br /><span data-bind="{text: name}"></span></p>
+                        <p><strong>Description</strong><div data-bind="{html: description}"></div></p>
+                        <p><strong>Price</strong>: $<span data-bind="{text: price}"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/knockout");
+    @Scripts.Render("~/bundles/spin")
+
+    <script src="~/Scripts/knockout/CatalogViewModel.js"></script>
+
+    <script type="text/javascript">
+
+    var url = '/api/catalog';
+
+    $(document).ready(function () {
+        var modalViewModel = new ProductDetailViewModel(url);
+
+        ko.applyBindings(new CatalogViewModel(url),document.getElementById('content'));
+        ko.applyBindings(modalViewModel, document.getElementById('productModal'));
+
+        $('#productModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('path');
+
+            modalViewModel.update(id);
+        });
+    });
+    </script>
+}

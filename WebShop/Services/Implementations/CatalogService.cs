@@ -23,8 +23,11 @@ namespace WebShop.Services
 		{
 			XmlSerializer serializer = new XmlSerializer(typeof(CatalogService));
 
-			FileStream fileStream = new FileStream(file, FileMode.Open);
-			CatalogService store = (CatalogService)serializer.Deserialize(fileStream);
+			CatalogService store = null;
+			using(FileStream fileStream = new FileStream(file, FileMode.Open))
+			{
+				 store = (CatalogService)serializer.Deserialize(fileStream);
+			}
 			store.file = file;
 
 			return store;

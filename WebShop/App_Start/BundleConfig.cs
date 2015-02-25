@@ -30,6 +30,13 @@ namespace WebShop
 					  "~/Content/bootstrap-notify.css",
 					  "~/Content/font-awesome.css",
 					  "~/Content/site.css"));
+
+			bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+					   "~/Scripts/knockout-*"));
+
+			bundles.Add(new ScriptBundle("~/bundles/spin").Include(
+					  "~/Scripts/spin.js",
+					  "~/Scripts/spin.implementation.js"));
 		}
 	}
 }

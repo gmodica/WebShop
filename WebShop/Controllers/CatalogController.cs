@@ -37,5 +37,10 @@ namespace WebShop.Controllers
 
 			return View(product);
 		}
+
+		public ActionResult WebApi()
+		{
+			return View();
+		}
 	}
 }
