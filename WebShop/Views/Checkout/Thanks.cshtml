@@ -1,8 +1,16 @@
-﻿@{
+﻿@using WebShop.Models
+
+@model CheckoutThanksViewModel
+
+@{
     ViewBag.Title = "Thanks";
 }
 
-<h2>Thanks</h2>
+<h2>Thanks for your purchase</h2>
+
+<p>This is your order id: <strong>@Model.OrderId</strong></p>
+
+<hr />
 
 <a href="@Url.Action("Index","Catalog")" role="button" class="btn btn-default btn-lg">Continue Shopping</a>
 

@@ -1,6 +1,6 @@
 ﻿@using WebShop.Models;
 
-@model Cart
+@model CheckoutIndexViewModel
 
 @{
     ViewBag.Title = "Checkout";
@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (CartItem item in Model.Items)
+            @foreach (CartItem item in Model.Cart.Items)
             {
                 <tr>
                     <td><img class="product-minithumbnail" src="~/Content/products/@item.Product.Image" alt="@item.Product.Name" /></td>
@@ -30,24 +30,24 @@
                     <td><div class="pull-right">@Html.DisplayFor(m => item.Total)</div></td>
                 </tr>
             }
-            <tr class="info">
+            <tr>
                 <td colspan="4"><div class="pull-right">Sub Total</div></td>
-                <td style="border-bottom: 0px"><div class="pull-right">@Html.DisplayFor(m => m.SubTotal)</div></td>
+                <td style="border-bottom: 0px"><div class="pull-right">@Html.DisplayFor(m => m.Cart.SubTotal)</div></td>
             </tr>
-            <tr class="info">
-                <td colspan="4" style="border: 0px"><div class="pull-right">Taxes (@(Model.Tax * 100)%)</div></td>
-                <td style="border: 0px"><div class="pull-right">@Html.DisplayFor(m => m.TaxTotal)</div></td>
+            <tr>
+                <td colspan="4" style="border: 0px"><div class="pull-right">Taxes (@(Model.Cart.Tax * 100)%)</div></td>
+                <td style="border: 0px"><div class="pull-right">@Html.DisplayFor(m => m.Cart.TaxTotal)</div></td>
             </tr>
-            <tr class="info">
+            <tr>
                 <td colspan="4" style="border: 0px"><div class="pull-right"><strong>Total</strong></div></td>
-                <td><div class="pull-right"><strong>@Html.DisplayFor(m => m.Total)</strong></div></td>
+                <td><div class="pull-right"><strong>@Html.DisplayFor(m => m.Cart.Total)</strong></div></td>
             </tr>
         </tbody>
     </table>
 
     <p class="text-center">
         <a href="@Url.Action("Index","Catalog")" role="button" class="btn btn-default btn-lg">Continue Shopping</a>
-        <button id="checkout" type="button" class="btn btn-success btn-lg" @(Model.Items.Count == 0 ? "disabled=\"disabled\"" : "")><i class="fa fa-check-circle"></i> Confirm Checkout</button>
+        <button id="checkout" type="button" class="btn btn-success btn-lg" @(Model.Cart.Items.Count == 0 ? "disabled=\"disabled\"" : "")><i class="fa fa-check-circle"></i> Confirm Checkout</button>
     </p>
 
 

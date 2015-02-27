@@ -212,15 +212,20 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
+    <Compile Include="Models\CheckoutViewModels.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\Poco\CartItem.cs" />
+    <Compile Include="Models\Poco\Product.cs" />
+    <Compile Include="Models\Poco\Cart.cs" />
+    <Compile Include="Models\ShoppingCartViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ICatalogService.cs" />
+    <Compile Include="Services\IErpService.cs" />
     <Compile Include="Services\IFinanceService.cs" />
     <Compile Include="Services\Implementations\CatalogService.cs" />
+    <Compile Include="Services\Implementations\ErpService.cs" />
     <Compile Include="Services\Implementations\FinanceService.cs" />
     <Compile Include="Services\Implementations\SettingsService.cs" />
     <Compile Include="Services\Implementations\ShoppingCartService.cs" />
@@ -294,6 +299,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\IIS.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -377,7 +383,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WebShop.Erp\WebShop.Erp.csproj">
+      <Project>{a3ef7cea-ed27-4ba5-9b86-d6d1f52de0f3}</Project>
+      <Name>WebShop.Erp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

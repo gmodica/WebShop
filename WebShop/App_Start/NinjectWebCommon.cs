@@ -72,6 +72,11 @@ namespace WebShop.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+			kernel.Bind<ApplicationUserManager>().ToMethod(context =>
+				{
+					return HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+				}).InSingletonScope();
+
 			kernel.Bind<ISettingsService>().To<SettingsService>().InSingletonScope();
 
 			kernel.Bind<IFinanceService>().To<FinanceService>().InSingletonScope();
@@ -89,6 +94,8 @@ namespace WebShop.App_Start
 				ApplicationDbContext dbContext = HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>();
 				return ShoppingCartService.Create(dbContext);
 			}).InSingletonScope();
+
+			kernel.Bind<IErpService>().To<ErpService>().InSingletonScope();
         }        
     }
 
