@@ -15,6 +15,6 @@
 	Last update: 2015/02/28
 	Language: English
 	Standards: HTML5, CSS3, Javascript                         
-	Components: ASP.Net MVC 5, Entity Framework, jQuery
+	Components: ASP.Net MVC 5, Entity Framework, jQuery, Bootstrap
 	Doctype: HTML5
 	IDE: Visual Studio 2013 Community Edition

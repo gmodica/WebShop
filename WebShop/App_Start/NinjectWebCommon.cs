@@ -93,9 +93,9 @@ namespace WebShop.App_Start
 			{
 				ApplicationDbContext dbContext = HttpContext.Current.GetOwinContext().Get<ApplicationDbContext>();
 				return ShoppingCartService.Create(dbContext);
-			}).InSingletonScope();
+			});
 
-			kernel.Bind<IErpService>().To<ErpService>().InSingletonScope();
+			kernel.Bind<IErpService>().To<ErpService>();
         }        
     }
 

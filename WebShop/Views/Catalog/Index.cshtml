@@ -15,10 +15,10 @@
     {
         <article class="product">
             <div class="row">
-                <div class="col-md-2 col-xs-3">
+                <div class="col-md-2 col-xs-12">
                     <a href="@Url.Action("Product", "Catalog", new { id = p.Id })"><img class="product-thumbnail" src="~/Content/products/@p.Image" alt="@p.Name" /></a>
                 </div>
-                <div class="col-md-10 col-xs-7">
+                <div class="col-md-10 col-xs-12">
                     <header>
                         <h3>@Html.ActionLink(p.Name, "Product", "Catalog", new { id = p.Id }, null)</h3>
                     </header>

@@ -8,10 +8,10 @@
     <div data-bind="foreach: products">
         <article class="product">
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2 col-xs-12">
                     <a data-toggle="modal" data-target="#productModal" data-bind="attr: { 'data-path': id }" href="#"><img class="product-thumbnail" data-bind="attr: { src: '/Content/products/' + image, alt: name }" /></a>
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-10 col-xs-12">
                     <header>
                         <h3><a data-toggle="modal" data-target="#productModal" data-bind="attr: { 'data-path': id }" href="#"><span data-bind="text: name"></span></a></h3>
                     </header>
@@ -32,10 +32,10 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-cs-12">
                         <img class="product-photo" data-bind="attr: { src: '/Content/products/' + image(), alt: name }" />
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 col-xs-12">
                         <p><strong>Name</strong><br /><span data-bind="text: name"></span></p>
                         <p><strong>Description</strong><div data-bind="html: description"></div></p>
                         <p><strong>Price</strong>: <span data-bind="text: price"></span></p>
