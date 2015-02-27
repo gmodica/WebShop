@@ -10,6 +10,7 @@ namespace WebShop.Services
 	public interface IErpService
 	{
 		IQueryable<Order> Orders { get; }
-		void Save(Order order);
+
+		Task SaveAsync(Order order);
 	}
 }

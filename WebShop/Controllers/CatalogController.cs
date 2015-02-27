@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using PagedList;
 using WebShop.Services;
 using WebShop.Models;
+using System.Threading.Tasks;
 
 namespace WebShop.Controllers
 {
@@ -21,17 +22,17 @@ namespace WebShop.Controllers
 		}
 
 
-		public ActionResult Index(int? page)
+		public async Task<ActionResult> Index(int? page)
 		{
 			var pageNumber = page ?? 1;
-			var pagedResults = catalogService.GetProducts().ToPagedList(pageNumber, settingsService.PageSize);
+			var pagedResults = (await catalogService.GetProductsAsync()).ToPagedList(pageNumber, settingsService.PageSize);
 
 			return View(pagedResults);
 		}
 
-		public ActionResult Product(string id)
+		public async Task<ActionResult> Product(string id)
 		{
-			Product product = catalogService.Find(id);
+			Product product = await catalogService.FindAsync(id);
 
 			if (product == null) return HttpNotFound();
 

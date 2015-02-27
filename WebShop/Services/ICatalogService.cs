@@ -9,8 +9,8 @@ namespace WebShop.Services
 {
 	public interface ICatalogService
 	{
-		Product Find(string id);
-		IQueryable<Product> GetProducts();
-		IQueryable<Product> GetDeals();
+		Task<Product> FindAsync(string id);
+		Task<IQueryable<Product>> GetProductsAsync();
+		Task<IQueryable<Product>> GetDealsAsync();
 	}
 }

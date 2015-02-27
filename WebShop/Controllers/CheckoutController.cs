@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -28,20 +29,20 @@ namespace WebShop.Controllers
 			this.userManager = userManager;
 		}
 
-		public ActionResult Index()
+		public async Task<ActionResult> Index()
 		{
-			Cart cart = shoppingCartService.GetCart();
+			Cart cart = await shoppingCartService.GetCartAsync();
 
-			shoppingCartService.FillCart(cart, catalogService, financeService);
+			await shoppingCartService.FillCartAsync(cart, catalogService, financeService);
 
 			return View(new CheckoutIndexViewModel() { Cart = cart });
 		}
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Checkout()
+		public async Task<ActionResult> Checkout()
 		{
-			Cart cart = shoppingCartService.GetCart();
+			Cart cart = await shoppingCartService.GetCartAsync();
 
 			ApplicationUser user = userManager.FindById(User.Identity.GetUserId());
 
@@ -60,7 +61,7 @@ namespace WebShop.Controllers
 			};
 			foreach(CartItem cartItem in cart.Items)
 			{
-				Product product = catalogService.Find(cartItem.ProductId);
+				Product product = await catalogService.FindAsync(cartItem.ProductId);
 				order.Items.Add(new OrderItem()
 				{
 					ProductId = product.Id,
@@ -68,9 +69,9 @@ namespace WebShop.Controllers
 					Quantity = cartItem.Quantity
 				});
 			}
-			erpService.Save(order);
+			await erpService.SaveAsync(order);
 
-			shoppingCartService.EmptyCart(cart);
+			await shoppingCartService.EmptyCartAsync(cart);
 
 			return RedirectToAction("Thanks", new { order.Id });
 		}

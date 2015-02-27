@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebShop.Models;
@@ -17,9 +18,9 @@ namespace WebShop.Controllers
 			this.catalogService = catalogService;
 		}
 
-		public ActionResult Index()
+		public async Task<ActionResult> Index()
 		{
-			var deals = catalogService.GetDeals();
+			var deals = await catalogService.GetDealsAsync();
 			HomeViewModel model = new HomeViewModel() { Deals = deals.Take(3).ToList() };
 
 			return View(model);

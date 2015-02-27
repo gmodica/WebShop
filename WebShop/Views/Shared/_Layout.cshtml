@@ -6,7 +6,26 @@
     <title>@ViewBag.Title - Bookstore</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link rel="apple-touch-icon" sizes="57x57" href="/Content/icons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/Content/icons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Content/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/Content/icons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Content/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/Content/icons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/Content/icons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/Content/icons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/Content/icons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/Content/icons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/Content/icons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/Content/icons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/Content/icons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/Content/icons/manifest.json">
+    <link rel="shortcut icon" href="/Content/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-TileImage" content="/Content/icons/mstile-144x144.png">
+    <meta name="msapplication-config" content="/Content/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="author" href="humans.txt" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -28,7 +47,7 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="cart">@{ Html.RenderAction("CartSummary", "ShoppingCart"); }</li>
+                    <li id="cart" />
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -48,17 +67,22 @@
 
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
+            refreshCart();
             window.addEventListener("pageshow", function (e) {
-                $.ajax({
-                    url: "@(Url.Action("CartSummary","ShoppingCart"))",
-                    cache: false,
-                    dataType: "html",
-                    success: function (data) {
-                        $("#cart").html(data);
-                    }
-                });
+                refreshCart();
             }, false);
         });
+
+        function refreshCart() {
+            $.ajax({
+                url: "@(Url.Action("CartSummary","ShoppingCart"))",
+                cache: false,
+                dataType: "html",
+                success: function (data) {
+                    $("#cart").html(data);
+                }
+            });
+        }
     </script>
 </body>
 </html>

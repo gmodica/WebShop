@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using WebShop.Erp.Models;
 
@@ -24,13 +25,13 @@ namespace WebShop.Services
 		}
 
 
-		public void Save(Order order)
+		public async Task SaveAsync(Order order)
 		{
 			if (context.Orders.Find(order.Id) == null)
 			{
 				context.Orders.Add(order);
 			}
-			context.SaveChanges();
+			await context.SaveChangesAsync();
 		}
 	}
 }

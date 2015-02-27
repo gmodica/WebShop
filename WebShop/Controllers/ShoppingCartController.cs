@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
@@ -23,103 +24,61 @@ namespace WebShop.Controllers
 		}
 
 		[OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
-		public ActionResult Index()
+		public async Task<ActionResult> Index()
 		{
-			Cart cart = shoppingCartService.GetCart();
+			Cart cart = await shoppingCartService.GetCartAsync();
 
-			shoppingCartService.FillCart(cart, catalogService, financeService);
+			await shoppingCartService.FillCartAsync(cart, catalogService, financeService);
 
 			return View(new ShoppingCartIndexViewModel() { Cart = cart });
 		}
 
-		public ActionResult CartSummary()
+		public async Task<ActionResult> CartSummary()
 		{
-			Cart cart = shoppingCartService.GetCart();
+			Cart cart = await shoppingCartService.GetCartAsync();
 
-			return PartialView(cart.Items.Sum(x => x.Quantity));
+			return View(cart.Items.Sum(x => x.Quantity));
 		}
 
 		[HttpPost]
-		public ActionResult AddItemToCart(string id)
+		public async Task<ActionResult> AddItemToCart(string id)
 		{
-			Cart cart = shoppingCartService.GetCart();
+			Cart cart = await shoppingCartService.GetCartAsync();
 
-			shoppingCartService.AddItemToCart(cart, id);
+			await shoppingCartService.AddItemToCartAsync(cart, id);
 
 			return Json(true);
 		}
 
 		[HttpPost]
-		public ActionResult SubtractItemFromCart(string id)
+		public async Task<ActionResult> SubtractItemFromCart(string id)
 		{
-			Cart cart = shoppingCartService.GetCart();
+			Cart cart = await shoppingCartService.GetCartAsync();
 
-			shoppingCartService.SubtractItemFromCart(cart, id);
+			await shoppingCartService.SubtractItemFromCartAsync(cart, id);
 
 			return Json(true);
 		}
 
 		[HttpPost]
-		public ActionResult RemoveItemFromCart(string id)
+		public async Task<ActionResult> RemoveItemFromCart(string id)
 		{
-			Cart cart = shoppingCartService.GetCart();
+			Cart cart = await shoppingCartService.GetCartAsync();
 
-			shoppingCartService.RemoveItemFromCart(cart, id);
+			await shoppingCartService.RemoveItemFromCartAsync(cart, id);
 
 			return Json(true);
 		}
 
 		[HttpPost]
-		public ActionResult EmptyCart()
+		public async Task<ActionResult> EmptyCart()
 		{
-			Cart cart = shoppingCartService.GetCart();
+			Cart cart = await shoppingCartService.GetCartAsync();
 
-			shoppingCartService.EmptyCart(cart);
+			await shoppingCartService.EmptyCartAsync(cart);
 
 			return Json(true);
-		}
-
-		//[OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
-		//private Cart GetCart()
-		//{
-		//	Cart cart = null;
-
-		//	// try to get cart for the user
-		//	if (User.Identity.IsAuthenticated)
-		//	{
-		//		cart = shoppingCartService.GetCartForUser(User.Identity.Name);
-		//	}
-
-		//	// try to get the cart from the cookie
-		//	HttpCookie cookie = Request.Cookies["_cartId"];
-		//	if (cookie != null && !String.IsNullOrEmpty(cookie.Value)) // cookie present
-		//	{
-		//		Cart cookieCart = shoppingCartService.GetCart(cookie.Value);
-
-		//		if (cart == null && cookieCart != null && User.Identity.IsAuthenticated) // associate the cart with the user if authenticated
-		//		{
-		//			shoppingCartService.SetUser(cookieCart, User.Identity.Name);
-		//			shoppingCartService.Save(cart);
-		//			cart = cookieCart;
-		//		}
-
-		//		if (cart != null && cookieCart != null && cart.Id != cookieCart.Id) // the user is probably logging from another PC or browser
-		//			cart = shoppingCartService.MergeCarts(cart, cookieCart); // we merge the two carts and give priority to the for the authenticated user
-		//		else if (cookieCart != null)
-		//			cart = cookieCart;
-		//	}
-
-		//	if (cart == null) cart = shoppingCartService.CreateNewCart(User.Identity.Name);
-
-		//	// update the cookie
-		//	cookie = new HttpCookie("_cartId");
-		//	cookie.Value = cart.Id;
-		//	cookie.Expires = DateTime.Now.AddMonths(1);
-		//	Response.Cookies.Add(cookie);
-
-		//	return cart;
-		//}
-
+		}		
 
 	}
 }

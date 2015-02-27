@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebShop.Models;
@@ -21,17 +22,17 @@ namespace WebShop.Controllers.WebApi
 
 		// GET: api/Catalog
 		[HttpGet]
-		public IEnumerable<Product> Get()
+		public async Task<IEnumerable<Product>> Get()
 		{
-			return catalogService.GetProducts().ToList();
+			return (await catalogService.GetProductsAsync()).ToList();
 		}
 
 		// GET: api/Catalog/5
 		[HttpGet]
 		[ResponseType(typeof(Product))]
-		public IHttpActionResult Get(string id)
+		public async Task<IHttpActionResult> Get(string id)
 		{
-			Product product = catalogService.Find(id);
+			Product product = await catalogService.FindAsync(id);
 			if (product == null)
 			{
 				return NotFound();

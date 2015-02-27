@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Serialization;
 using WebShop.Models;
@@ -40,17 +41,27 @@ namespace WebShop.Services
 			set { products = value; }
 		}
 
-		public Product Find(string id)
+		public Task<Product> FindAsync(string id)
 		{
-			return Products.Where(x => x.Id == id).FirstOrDefault();
+			Product product = Products.Where(x => x.Id == id).FirstOrDefault();
+
+			TaskCompletionSource<Product> tcs = new TaskCompletionSource<Product>();
+			tcs.SetResult(product);
+
+			return tcs.Task;
 		}
 
-		public IQueryable<Product> GetProducts()
+		public Task<IQueryable<Product>> GetProductsAsync()
 		{
-			return products.AsQueryable();
+			IQueryable<Product> result = products.AsQueryable();
+
+			TaskCompletionSource<IQueryable<Product>> tcs = new TaskCompletionSource<IQueryable<Product>>();
+			tcs.SetResult(result);
+
+			return tcs.Task;
 		}
 
-		public IQueryable<Product> GetDeals()
+		public Task<IQueryable<Product>> GetDealsAsync()
 		{
 			Random random = new Random(DateTime.Now.Millisecond);
 			List<Product> deals = new List<Product>();
@@ -58,7 +69,12 @@ namespace WebShop.Services
 			for(int i = 0; i <= 3; i++)
 				deals.Add(products[random.Next(products.Count)]);
 
-			return deals.AsQueryable();
+			IQueryable<Product> result = deals.AsQueryable();
+
+			TaskCompletionSource<IQueryable<Product>> tcs = new TaskCompletionSource<IQueryable<Product>>();
+			tcs.SetResult(result);
+
+			return tcs.Task;
 		}
 	}
 

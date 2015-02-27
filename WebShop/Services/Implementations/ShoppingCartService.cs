@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 using WebShop.Models;
 
 namespace WebShop.Services
@@ -22,36 +24,36 @@ namespace WebShop.Services
 			return service;
 		}
 
-		public Cart GetCart()
+		public async Task<Cart> GetCartAsync()
 		{
 			Cart cart = null;
 
 			// try to get cart for the user
 			if (HttpContext.Current.User.Identity.IsAuthenticated)
 			{
-				cart = GetCartForUser(HttpContext.Current.User.Identity.Name);
+				cart = await GetCartForUserAsync(HttpContext.Current.User.Identity.Name);
 			}
 
 			// try to get the cart from the cookie
 			HttpCookie cookie = HttpContext.Current.Request.Cookies["_cartId"];
 			if (cookie != null && !String.IsNullOrEmpty(cookie.Value)) // cookie present
 			{
-				Cart cookieCart = GetCart(cookie.Value);
+				Cart cookieCart = await GetCartAsync(cookie.Value);
 
 				if (cart == null && cookieCart != null && HttpContext.Current.User.Identity.IsAuthenticated) // associate the cart with the user if authenticated
 				{
 					SetUser(cookieCart, HttpContext.Current.User.Identity.Name);
-					Save(cookieCart);
+					await SaveAsync(cookieCart);
 					cart = cookieCart;
 				}
 
 				if (cart != null && cookieCart != null && cart.Id != cookieCart.Id) // the user is probably logging from another PC or browser
-					cart = MergeCarts(cart, cookieCart); // we merge the two carts and give priority to the for the authenticated user
+					cart = await MergeCartsAsync(cart, cookieCart); // we merge the two carts and give priority to the for the authenticated user
 				else if (cookieCart != null)
 					cart = cookieCart;
 			}
 
-			if (cart == null) cart = CreateNewCart(HttpContext.Current.User.Identity.Name);
+			if (cart == null) cart = await CreateNewCartAsync(HttpContext.Current.User.Identity.Name);
 
 			// update the cookie
 			cookie = new HttpCookie("_cartId");
@@ -62,60 +64,60 @@ namespace WebShop.Services
 			return cart;
 		}
 
-		public Cart GetCart(string id)
+		public async Task<Cart> GetCartAsync(string id)
 		{
-			return dbContext.Carts.Include("Items").Where(x => x.Id == id).FirstOrDefault();
+			return await dbContext.Carts.Include("Items").Where(x => x.Id == id).FirstOrDefaultAsync();
 		}
 
-		public void Save(Cart cart)
+		public async Task SaveAsync(Cart cart)
 		{
 			cart.Date = DateTime.Now; // update the date so it reflects the last time this cart was used
 
 			dbContext.Entry(cart).State = System.Data.Entity.EntityState.Modified;			
-			dbContext.SaveChanges();
+			await dbContext.SaveChangesAsync();
 		}
 
-		public void AddItemToCart(Cart cart, string id)
+		public async Task AddItemToCartAsync(Cart cart, string id)
 		{
 			CartItem item = cart.Items.Where(x => x.ProductId == id).FirstOrDefault();
 			if (item != null) item.Quantity++;
 			else cart.Items.Add(new CartItem() { ProductId = id, Quantity = 1 });
-			Save(cart);
+			await SaveAsync(cart);
 		}
 
-		public void SubtractItemFromCart(Cart cart, string id)
+		public async Task SubtractItemFromCartAsync(Cart cart, string id)
 		{
 			CartItem item = cart.Items.Where(x => x.ProductId == id).FirstOrDefault();
 			if (item != null && item.Quantity > 0)
 			{
 				item.Quantity--;
 				//if (item.Quantity == 0) cart.Items.Remove(item);
-				Save(cart);
+				await SaveAsync(cart);
 			}
 		}
 
-		public void RemoveItemFromCart(Cart cart, string id)
+		public async Task RemoveItemFromCartAsync(Cart cart, string id)
 		{
 			CartItem item = cart.Items.Where(x => x.ProductId == id).FirstOrDefault();
 			if (item != null)
 			{
 				cart.Items.Remove(item);
-				Save(cart);
+				await SaveAsync(cart);
 			}
 		}
 
-		public void EmptyCart(Cart cart)
+		public async Task EmptyCartAsync(Cart cart)
 		{
 			cart.Items.Clear();
-			Save(cart);
+			await SaveAsync(cart);
 		}
 
 
-		public void FillCart(Cart cart, ICatalogService catalogService, IFinanceService financeService)
+		public async Task FillCartAsync(Cart cart, ICatalogService catalogService, IFinanceService financeService)
 		{
 			foreach (CartItem item in cart.Items)
 			{
-				item.Product = catalogService.Find(item.ProductId);
+				item.Product = await catalogService.FindAsync(item.ProductId);
 				item.Total = item.Quantity * item.Product.Price;
 			}
 
@@ -131,17 +133,17 @@ namespace WebShop.Services
 		}
 
 
-		protected Cart CreateNewCart(string userName)
+		protected async Task<Cart> CreateNewCartAsync(string userName)
 		{
 			Cart cart = new Cart();
 			cart.User = dbContext.Users.Where(x => x.Email == userName).FirstOrDefault();
 			dbContext.Carts.Add(cart);
-			dbContext.SaveChanges();
+			await dbContext.SaveChangesAsync();
 
 			return cart;
 		}
 
-		protected Cart MergeCarts(Cart primaryCart, Cart secondaryCart)
+		protected async Task<Cart> MergeCartsAsync(Cart primaryCart, Cart secondaryCart)
 		{
 			List<CartItem> items = new List<CartItem>();
 			items.AddRange(secondaryCart.Items);
@@ -161,15 +163,15 @@ namespace WebShop.Services
 			}
 
 			dbContext.Carts.Remove(secondaryCart);
-			dbContext.SaveChanges();
+			await dbContext.SaveChangesAsync();
 
 			return primaryCart;
 		}
 
 
-		protected Cart GetCartForUser(string userName)
+		protected async Task<Cart> GetCartForUserAsync(string userName)
 		{
-			return dbContext.Carts.Include("Items").Where(x => x.User.UserName == userName).FirstOrDefault();
+			return await dbContext.Carts.Include("Items").Where(x => x.User.UserName == userName).FirstOrDefaultAsync();
 		}
 	}
 }
