@@ -2,53 +2,72 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using WebShop;
 using WebShop.Controllers;
+using WebShop.Models;
+using WebShop.Services;
 
 namespace WebShop.Tests.Controllers
 {
 	[TestClass]
 	public class HomeControllerTest
 	{
-		//[TestMethod]
-		//public void Index()
-		//{
-		//	// Arrange
-		//	HomeController controller = new HomeController();
+		protected Mock<ICatalogService> catalogService;
 
-		//	// Act
-		//	ViewResult result = controller.Index() as ViewResult;
+		[TestInitialize]
+		public void SetupMocks()
+		{
 
-		//	// Assert
-		//	Assert.IsNotNull(result);
-		//}
+			List<Product> products = Enumerable.Range(1, 3).Select(x => new Product() { Name = x.ToString() }).ToList();
 
-		//[TestMethod]
-		//public void About()
-		//{
-		//	// Arrange
-		//	HomeController controller = new HomeController();
+			catalogService = new Mock<ICatalogService>();
+			catalogService.Setup(m => m.GetDealsAsync()).Returns(Task.FromResult(products.AsQueryable<Product>()));
+		}
 
-		//	// Act
-		//	ViewResult result = controller.About() as ViewResult;
+		[TestMethod]
+		public async Task HomeIndex()
+		{
+			// Arrange
+			HomeController controller = new HomeController(catalogService.Object);
 
-		//	// Assert
-		//	Assert.AreEqual("Your application description page.", result.ViewBag.Message);
-		//}
+			// Act
+			ViewResult result = await controller.Index() as ViewResult;
 
-		//[TestMethod]
-		//public void Contact()
-		//{
-		//	// Arrange
-		//	HomeController controller = new HomeController();
+			// Assert
+			Assert.IsNotNull(result);
+			HomeViewModel model = result.Model as HomeViewModel;
+			Assert.IsNotNull(model);
+			Assert.AreEqual(3, model.Deals.Count);
+		}
 
-		//	// Act
-		//	ViewResult result = controller.Contact() as ViewResult;
+		[TestMethod]
+		public void HomeAbout()
+		{
+			// Arrange
+			HomeController controller = new HomeController(catalogService.Object);
 
-		//	// Assert
-		//	Assert.IsNotNull(result);
-		//}
+			// Act
+			ViewResult result = controller.About() as ViewResult;
+
+			// Assert
+			Assert.IsNotNull(result);
+		}
+
+		[TestMethod]
+		public void HomeContact()
+		{
+			// Arrange
+			HomeController controller = new HomeController(catalogService.Object);
+
+			// Act
+			ViewResult result = controller.Contact() as ViewResult;
+
+			// Assert
+			Assert.IsNotNull(result);
+		}
 	}
 }
